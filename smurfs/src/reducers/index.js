@@ -3,6 +3,7 @@ import {
   GET_SMURFS_SUCCESS,
   SMURFS_FAILURE,
   POST_SMURFS_SUCCESS,
+  UPDATE_SMURFS_SUCCESS,
 } from '../actions';
 
 const initialState = {
@@ -32,6 +33,12 @@ export const rootReducer = (state = initialState, action) => {
         error: '',
         isFetching: false,
         smurfs: [...state.smurfs, action.payload]
+      }
+    case UPDATE_SMURFS_SUCCESS:
+      return {
+        ...state,
+        error: '',
+        isFetching: false,
       }
     case SMURFS_FAILURE:
       return {

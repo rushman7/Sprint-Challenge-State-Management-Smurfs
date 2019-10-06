@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { getSmurfs } from '../actions/index';
 import { connect } from 'react-redux';
 import AddSmurf from './AddSmurf';
+import EditSmurf from './EditSmurf';
+import { Route } from 'react-router-dom';
+import DisplaySmurf from './DisplaySmurf';
 
 class App extends Component {
   componentDidMount() {
@@ -19,16 +22,9 @@ class App extends Component {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {this.props.error && <p className="error">{this.props.error}</p>}
-        <div className="container">
-          {this.props.smurfs.map((smurf,index) => 
-            <div key={index} className="smurf-box">
-              <p>Name: {smurf.name}</p>
-              <p>Age: {smurf.age}</p>
-              <p>Height: {smurf.height}</p>
-            </div>
-          )}
-        </div>
-        <AddSmurf />
+        <Route exact path='/' component={DisplaySmurf} />
+        <Route path='/:id' component={EditSmurf} /> 
+        <Route exact path='/' component={AddSmurf} />
       </div>
     );
   }
