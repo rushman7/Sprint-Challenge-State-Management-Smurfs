@@ -1,7 +1,8 @@
 import { 
-  FETCH_SMURFS_START,
-  FETCH_SMURFS_SUCCESS,
-  FETCH_SMURFS_FAILURE,
+  SMURFS_START,
+  GET_SMURFS_SUCCESS,
+  SMURFS_FAILURE,
+  POST_SMURFS_SUCCESS,
 } from '../actions';
 
 const initialState = {
@@ -12,20 +13,27 @@ const initialState = {
 
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
-    case FETCH_SMURFS_START:
+    case SMURFS_START:
       return {
         ...state,
         error: '',
         isFetching: true
       }
-    case FETCH_SMURFS_SUCCESS:
+    case GET_SMURFS_SUCCESS:
       return {
         ...state,
         error: '',
         isFetching: false,
         smurfs: action.payload
       }
-    case FETCH_SMURFS_FAILURE:
+    case POST_SMURFS_SUCCESS:
+      return {
+        ...state,
+        error: '',
+        isFetching: false,
+        smurfs: [...state.smurfs, action.payload]
+      }
+    case SMURFS_FAILURE:
       return {
         ...state,
         error: action.payload,

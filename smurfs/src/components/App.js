@@ -1,23 +1,27 @@
 import React, { Component } from "react";
-import { fetchSmurfs } from '../actions/index';
+import { getSmurfs } from '../actions/index';
 import { connect } from 'react-redux';
+import AddSmurf from './AddSmurf';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchSmurfs();
+    this.props.getSmurfs();
   }
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>{this.props.smurfs.map(smurf => (
-          <div key={smurf.id}>
-            <p>Name: {smurf.name}</p>
-            <p>Age: {smurf.age}</p>
-            <p>Height: {smurf.height}</p>
-            <p>ID: {smurf.id}</p>
-          </div>
-        ))}</div>
+        {this.props.error && <p className="error">{this.props.error}</p>}
+        <div className="container">
+          {this.props.smurfs.map(smurf => (
+            <div key={smurf.id} className="smurf-box">
+              <p>Name: {smurf.name}</p>
+              <p>Age: {smurf.age}</p>
+              <p>Height: {smurf.height}</p>
+            </div>
+          ))}
+        </div>
+        <AddSmurf />
       </div>
     );
   }
@@ -28,4 +32,4 @@ const mapStateToProps = state => ({
   error: state.error
 })
 
-export default connect(mapStateToProps, { fetchSmurfs })(App);
+export default connect(mapStateToProps, { getSmurfs })(App);

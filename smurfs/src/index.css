@@ -7,3 +7,33 @@ body {
 .App {
   text-align: center;
 }
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 80%;
+  margin: auto;
+}
+
+.smurf-box {
+  border: 1px solid black;
+  width: 45%;
+  height: 120px;
+}
+
+.form-box {
+  display: flex;
+  flex-flow: column nowrap;
+  border: 1px solid black;
+  width: 50%;
+  margin: 5% auto;
+  padding: 5px 5px 15px 5px;
+}
+
+.form-box input {
+  margin: 5px;
+}
+
+.form-box button {
+  margin-top: 10px;
+}
