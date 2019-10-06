@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const AddSmurf = props => {
   const initialState = {
     name: '',
-    age: 0,
+    age: '',
     height: ''
   }
 
@@ -19,7 +19,6 @@ const AddSmurf = props => {
   }
 
   const onChange = e => {
-    e.preventDefault();
     setSmurf({ ...smurf, [e.target.name]: e.target.value })
   }
 

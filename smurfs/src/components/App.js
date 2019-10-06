@@ -7,19 +7,26 @@ class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.smurfs.length !== prevProps.smurfs.length) {
+      this.props.getSmurfs();
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {this.props.error && <p className="error">{this.props.error}</p>}
         <div className="container">
-          {this.props.smurfs.map(smurf => (
-            <div key={smurf.id} className="smurf-box">
+          {this.props.smurfs.map((smurf,index) => 
+            <div key={index} className="smurf-box">
               <p>Name: {smurf.name}</p>
               <p>Age: {smurf.age}</p>
               <p>Height: {smurf.height}</p>
             </div>
-          ))}
+          )}
         </div>
         <AddSmurf />
       </div>

@@ -19,19 +19,25 @@ body {
   border: 1px solid black;
   width: 45%;
   height: 120px;
+  margin: 2%;
 }
 
 .form-box {
-  display: flex;
-  flex-flow: column nowrap;
   border: 1px solid black;
   width: 50%;
   margin: 5% auto;
   padding: 5px 5px 15px 5px;
 }
 
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 70%;
+  margin: auto;
+}
+
 .form-box input {
-  margin: 5px;
+  margin: 5px 0px;
 }
 
 .form-box button {
